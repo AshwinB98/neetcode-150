@@ -22,4 +22,16 @@ const findAnagram = (s, t) => {
   return true;
 };
 
-console.log(findAnagram(s, t));
+//Using Hashset and charCode
+const findAnagram2 = (s, t) => {
+  if (s.length !== t.length) return false;
+  const charArr = new Array(26).fill(0);
+  for (let i = 0; i < s.length; i++) {
+    charArr[s.charCodeAt(i) - "a".charCodeAt(0)] += 1;
+    charArr[t.charCodeAt(i) - "a".charCodeAt(0)] -= 1;
+  }
+  return charArr.every((val) => val === 0);
+};
+
+findAnagram(s, t);
+findAnagram2(s, t);
